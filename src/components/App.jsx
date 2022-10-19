@@ -1,14 +1,16 @@
 import { Routes, Route } from 'react-router-dom';
-import Layout from './Layout';
+import Home from '../pages/Home/Home';
+import Movies from '../pages/Movies/Movies';
+import SharedLayout from './SharedLayout/SharedLayout';
 
 export const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          {/* <Route path="/" element={<Home />}></Route>
-          <Route path="/movies" element={<Movies />}></Route>
-          <Route path="/movies/:movieId" element={<MovieDetails />}>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />}></Route>
+          <Route path="movies" element={<Movies />}></Route>
+          {/* <Route path="/movies/:movieId" element={<MovieDetails />}>
             <Route path="/movies/:movieId/cast" element={<Cast />}></Route>
             <Route
               path="/movies/:movieId/reviews"
@@ -17,7 +19,6 @@ export const App = () => {
           </Route> */}
         </Route>
       </Routes>
-      ;
     </div>
   );
 };
