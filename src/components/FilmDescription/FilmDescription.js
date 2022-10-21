@@ -3,7 +3,7 @@
 export default function FilmDescription({
   movie: { title, overview, release_date, poster_path },
 }) {
-  const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+  // const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
   return (
     <div>
