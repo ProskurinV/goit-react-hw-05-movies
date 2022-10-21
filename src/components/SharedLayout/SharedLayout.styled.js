@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 
 export const Header = styled.div`
   background-image: url(${bacgroundImg});
-  min-height: 100px;
+  min-height: 50px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -21,7 +21,7 @@ export const Nav = styled.div`
   align-items: center;
   justify-content: center;
   gap: 30px;
-  padding-top: 40px;
+  padding-top: 20px;
 `;
 
 export const NavItem = styled(NavLink)`
@@ -43,3 +43,41 @@ export const NavItem = styled(NavLink)`
     color: #ff001b;
   }
 `;
+
+// export const Footer = styled.div`
+//   background-color: #f7f7f7;
+
+//   padding-top: 29px;
+//   padding-bottom: 29px;
+// `;
+
+// .footer__list {
+//   gap: 10px;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   align-items: baseline;
+// }
+
+// .footer__item {
+//   gap: 3px;
+//   height: 16px;
+
+//   display: flex;
+//   font-weight: 400;
+//   font-size: 14px;
+//   line-height: 1.14;
+//   color: #545454;
+
+//   @media screen and (min-width: 768px) {
+//     font-size: 16px;
+//     line-height: 1.19;
+//   }
+// }
+
+// .show-hover {
+//   &:hover,
+//   &:focus {
+//     color: #2196f3;
+//   }
+// }
