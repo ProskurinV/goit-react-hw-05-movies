@@ -1,20 +1,12 @@
 import styled from 'styled-components';
 
 export const MovieList = styled.ul`
-  /* display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  font-style: 20px;
-  align-items: center;
-  gap: 20px; */
-
   display: flex;
-  gap: 20px;
+  gap: 30px;
   flex-wrap: wrap;
   justify-content: center;
   max-width: calc(100vw - 48px);
-  /* grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  grid-gap: 16px; */
+
   margin-top: 0;
   margin-bottom: 0;
   padding: 0;
@@ -26,7 +18,7 @@ export const MovieList = styled.ul`
 export const FilmCard = styled.div`
   width: 280px;
   // height: 438px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;

@@ -25,7 +25,7 @@ export default function TraidingFilms() {
 
   return (
     <MovieList>
-      {traidingFilms.map(({ poster_path, title, id }) => (
+      {traidingFilms.map(({ poster_path, title, overview, id }) => (
         <NavLink key={id} to={`/movies/:movieId${id}`}>
           <FilmCard>
             <Img src={IMG_URL + poster_path} alt={title} />

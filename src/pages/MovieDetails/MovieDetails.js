@@ -7,6 +7,8 @@ export default function MovieDetails(film) {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
+  // const filmDesc = fetchFilmsId(movieId);
+
   useEffect(() => {
     if (!movie) {
       return;
@@ -23,8 +25,8 @@ export default function MovieDetails(film) {
 
   return (
     <main>
-      {film.title}
-      <h2>- - {movieId}</h2>
+      {/* {filmDesc.title} */}
+      <h2>-- {movieId}</h2>
       <FilmDescription movie={film} />
     </main>
   );
