@@ -4,7 +4,6 @@ import bacgroundImg from '../../images/header768@2x-min.jpg';
 
 export const Wrapper = styled.div`
   margin: 0 auto;
-  /* width: 100%; */
   max-width: 1280px;
 `;
 

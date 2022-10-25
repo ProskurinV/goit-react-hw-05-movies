@@ -5,9 +5,8 @@ import { Form, Field } from 'formik';
 export const Search = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  padding-bottom: 30px;
   flex-direction: column;
-  /* background-color: #f7f7f7; */
 `;
 
 export const FormEl = styled(Form)`
@@ -46,13 +45,4 @@ export const BtnSearch = styled.button`
   position: absolute;
   top: 0;
   right: 0;
-`;
-
-export const Details = styled.p`
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding-top: 10px;
-  font-size: 14px;
-  font-weight: 500;
 `;

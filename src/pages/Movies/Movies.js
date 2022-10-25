@@ -1,48 +1,34 @@
 // import PropTypes from 'prop-types';
-import SearchBar from 'components/Searchbar/SearchBar';
+// import SearchBar from 'components/Searchbar/SearchBar';
+// import { useState } from 'react';
+// import { useSearchParams } from 'react-router-dom';
 
-export default function Movies() {
-  return (
-    <main>
-      <SearchBar />
-    </main>
-  );
-}
-// ==========================
-// // import PropTypes from 'prop-types';
-// import React from 'react';
-// import { Formik } from 'formik';
-// import { AiOutlineSearch } from 'react-icons/ai';
-// import { Search, FormEl, Input, BtnSearch, Details } from './Movies.styled';
+import RenderSearchFilms from 'components/RenderFilms/RenderSearchFilms';
+import { MainSection } from './Movies.styled';
 // import { Outlet } from 'react-router-dom';
 
-// export default function Movies({ onSubmit }) {
-//   const handleSubmit = async (values, actions) => {
-//     await onSubmit(values);
+export default function Movies() {
+  // const [searchParams] = useSearchParams();
 
-//     actions.setSubmitting(false);
-//     actions.resetForm();
-//   };
-//   return (
-//     <Search as="main">
-//       <Formik initialValues={{ query: '' }} onSubmit={handleSubmit}>
-//         {({ isSubmitting }) => (
-//           <FormEl>
-//             <BtnSearch type="submit" disabled={isSubmitting}>
-//               <AiOutlineSearch size={20} />
-//             </BtnSearch>
-//             <Input
-//               name="query"
-//               type="text"
-//               autoComplete="off"
-//               autoFocus
-//               placeholder="Search movies"
-//             />
-//           </FormEl>
-//         )}
-//       </Formik>
-//       <Details>Movie details</Details>
-//       <Outlet />
-//     </Search>
-//   );
-// }
+  // const [searchMovies, setSearchMovies] = useState([]);
+  // const [query, setQuery] = useState('');
+  // const [error, setError] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
+
+  // const handlerFormSubmit = values => {
+  //   if (query !== values.query.trim()) {
+  //     setSearchMovies([]);
+  //     setQuery(values.query.trim());
+  //     setError(false);
+  //     setIsLoading(false);
+  //   }
+  // };
+
+  return (
+    <MainSection>
+      {/* <SearchBar onSubmit={handlerFormSubmit} /> */}
+      <RenderSearchFilms />
+      {/* <Outlet /> */}
+    </MainSection>
+  );
+}

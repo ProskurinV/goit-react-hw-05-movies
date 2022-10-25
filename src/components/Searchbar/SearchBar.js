@@ -2,7 +2,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { Search, FormEl, Input, BtnSearch, Details } from './SearchBar.styled';
+import { Search, FormEl, Input, BtnSearch } from './SearchBar.styled';
 import { Outlet } from 'react-router-dom';
 
 export default function SearchBar({ onSubmit }) {
@@ -30,7 +30,7 @@ export default function SearchBar({ onSubmit }) {
           </FormEl>
         )}
       </Formik>
-      <Details>Movie details</Details>
+
       <Outlet />
     </Search>
   );

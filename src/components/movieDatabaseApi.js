@@ -13,10 +13,8 @@ export async function fetchTraidingFilms() {
   return response.data;
 }
 
-export async function fetchFilmsId(movieId) {
-  const response = await axios.get(
-    `${BASE_URL}movie/${movieId}?${lang}&${API_KEY}`
-  );
+export async function fetchFilmsId(id) {
+  const response = await axios.get(`${BASE_URL}movie/${id}?${lang}&${API_KEY}`);
 
   return response.data;
 }
