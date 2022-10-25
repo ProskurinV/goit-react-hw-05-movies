@@ -21,7 +21,7 @@ export default function TraidingFilms() {
         const films = response.results;
         setTraidingFilms(films);
       } catch {
-        setError('Can`t load images!');
+        setError('Can`t load movies!');
       } finally {
         setIsLoading(false);
       }

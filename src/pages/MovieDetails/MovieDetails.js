@@ -1,36 +1,41 @@
-import FilmDescription from 'components/FilmDescription';
+// import FilmDescription from 'components/FilmDescription';
 import { useState, useEffect } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
 import { Outlet, useParams } from 'react-router-dom';
-import { fetchFilmsId } from '../../components/movieDatabaseApi';
+import { fetchFilmsById } from '../../components/movieDatabaseApi';
 import Loader from '../../components/Loader/Loader';
+import toast, { Toaster } from 'react-hot-toast';
+import {
+  FilmCard,
+  Img,
+  MovieTitle,
+  Overview,
+  OverTitle,
+  VoteTitle,
+  Vote,
+} from './MovieDetails.styled';
 
-export default function MovieDetails(film) {
+export default function MovieDetails(id) {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  // const filmDesc = fetchFilmsId(movieId);
+  const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
   useEffect(() => {
-    if (!movie) {
-      return;
-    }
-    async function fetchMovieID() {
+    async function fetchMovieID(movieId) {
       try {
         setIsLoading(true);
-        const response = await fetchFilmsId(movieId);
-        const film = response.data;
-        setMovie(film);
+        const response = await fetchFilmsById(movieId);
+        setMovie(response);
       } catch {
-        setError('Can`t load images!');
+        setError('Can`t load movies!');
       } finally {
         setIsLoading(false);
       }
     }
-    fetchMovieID();
-  }, [movie, movieId]);
+    fetchMovieID(movieId);
+  }, [movieId]);
 
   useEffect(() => {
     if (error !== false) {
@@ -38,14 +43,31 @@ export default function MovieDetails(film) {
     }
   }, [error]);
 
+  if (!movie) {
+    return null;
+  }
+  const { poster_path, title, vote_average, overview } = movie;
   return (
-    <main>
+    <FilmCard>
       {isLoading && <Loader />}
-      {/* {filmDesc.title} */}
-      <p>{movieId}</p>
-      <FilmDescription movie={film} />
-      <Toaster />
+      <Img src={IMG_URL + poster_path} alt={title} />
+      <div>
+        <MovieTitle>{title}</MovieTitle>
+        <Overview>
+          <OverTitle>Overview:</OverTitle>
+          {overview}
+        </Overview>
+
+        <Vote>
+          <VoteTitle>Vote_average:</VoteTitle>
+          {vote_average}
+        </Vote>
+        {/* <p>{movie.genres}</p> */}
+      </div>
+
+      {/* <FilmDescription movie={film} /> */}
       <Outlet />
-    </main>
+      <Toaster />
+    </FilmCard>
   );
 }
