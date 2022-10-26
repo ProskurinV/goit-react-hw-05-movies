@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
 export const FilmCard = styled.main`
-  padding: 20px;
+  padding-bottom: 20px;
   display: flex;
   width: 100%;
-
-  /* justify-content: flex-start; */
   border-radius: 4px;
   box-shadow: 0px 4px 4px 0px #00000040;
 `;
 
 export const Img = styled.img`
   width: 200px;
+  padding-left: 20px;
+  padding-top: 20px;
 
   border-radius: 5px;
   margin-right: 20px;
@@ -25,35 +25,59 @@ export const MovieTitle = styled.h2`
   line-height: 1.17;
   text-transform: uppercase;
   color: #000000;
-  margin-bottom: 30px;
-`;
-
-export const OverTitle = styled.p`
-  font-weight: 24px;
-  font-weight: 700;
-  margin-bottom: 30px;
-`;
-
-export const Overview = styled.p`
-  font-weight: 20px;
-  line-height: 1.17;
-  /* text-transform: uppercase; */
-  color: #000000;
-  margin-bottom: 24px;
-  font-weight: 500;
-`;
-
-export const VoteTitle = styled.p`
-  font-weight: 24px;
-  font-weight: 700;
+  padding-top: 20px;
   margin-bottom: 20px;
 `;
 
-export const Vote = styled.p`
-  font-weight: 20px;
+export const OverTitle = styled.p`
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+`;
+
+export const Overview = styled.p`
+  font-size: 16px;
   line-height: 1.17;
-  /* text-transform: uppercase; */
   color: #000000;
-  margin-bottom: 24px;
-  font-weight: 500;
+  margin-bottom: 10px;
+  width: 80%;
+`;
+
+export const VoteTitle = styled.p`
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+`;
+
+export const Vote = styled.p`
+  font-size: 16px;
+  line-height: 1.17;
+  color: #000000;
+  margin-bottom: 10px;
+`;
+
+export const GenresTitle = styled.p`
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+`;
+
+export const Genres = styled.p`
+  font-size: 16px;
+  line-height: 1.17;
+  color: #000000;
+  margin-bottom: 10px;
+`;
+
+export const AddTitle = styled.h3`
+  display: flex;
+  justify-content: flex-start;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.17;
+  text-transform: uppercase;
+  color: #000000;
+  padding-top: 20px;
+  padding-left: 20px;
+  margin-bottom: 10px;
 `;

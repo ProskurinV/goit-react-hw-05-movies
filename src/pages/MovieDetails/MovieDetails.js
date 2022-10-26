@@ -1,4 +1,5 @@
-// import FilmDescription from 'components/FilmDescription';
+// import PropTypes from 'prop-types';
+
 import { useState, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { fetchFilmsById } from '../../components/movieDatabaseApi';
@@ -12,7 +13,12 @@ import {
   OverTitle,
   VoteTitle,
   Vote,
+  GenresTitle,
+  Genres,
+  AddTitle,
 } from './MovieDetails.styled';
+import Cast from 'components/Cast';
+import Reviews from 'components/Reviews';
 
 export default function MovieDetails(id) {
   const { movieId } = useParams();
@@ -48,26 +54,27 @@ export default function MovieDetails(id) {
   }
   const { poster_path, title, vote_average, overview } = movie;
   return (
-    <FilmCard>
-      {isLoading && <Loader />}
-      <Img src={IMG_URL + poster_path} alt={title} />
-      <div>
-        <MovieTitle>{title}</MovieTitle>
-        <Overview>
+    <>
+      <FilmCard>
+        {isLoading && <Loader />}
+        <Img src={IMG_URL + poster_path} alt={title} />
+        <div>
+          <MovieTitle>{title}</MovieTitle>
           <OverTitle>Overview:</OverTitle>
-          {overview}
-        </Overview>
-
-        <Vote>
-          <VoteTitle>Vote_average:</VoteTitle>
-          {vote_average}
-        </Vote>
-        {/* <p>{movie.genres}</p> */}
+          <Overview>{overview}</Overview>
+          <VoteTitle>User Score:</VoteTitle>
+          <Vote>{vote_average * 10}%</Vote>
+          <GenresTitle>Genres:</GenresTitle>
+          <Genres> {movie.genres.map(genre => genre.name).join(', ')}</Genres>
+        </div>
+      </FilmCard>
+      <div>
+        <AddTitle>Additional information</AddTitle>
+        <Cast />
+        <Reviews />
+        <Outlet />
+        <Toaster />
       </div>
-
-      {/* <FilmDescription movie={film} /> */}
-      <Outlet />
-      <Toaster />
-    </FilmCard>
+    </>
   );
 }

@@ -3,6 +3,8 @@ import Home from '../pages/Home/Home';
 import Movies from '../pages/Movies/Movies';
 import SharedLayout from './SharedLayout/SharedLayout';
 import MovieDetails from 'pages/MovieDetails/MovieDetails';
+import Cast from './Cast';
+import Reviews from './Reviews';
 
 export const App = () => {
   return (
@@ -12,11 +14,11 @@ export const App = () => {
           <Route index element={<Home />}></Route>
           <Route path="movies" element={<Movies />}></Route>
           <Route path="/movies/:movieId" element={<MovieDetails />}>
-            {/* <Route path="/movies/:movieId/cast" element={<Cast />}></Route>
+            <Route path="/movies/:movieId/cast" element={<Cast />}></Route>
             <Route
               path="/movies/:movieId/reviews"
               element={<Reviews />}
-            ></Route> */}
+            ></Route>
           </Route>
         </Route>
       </Routes>

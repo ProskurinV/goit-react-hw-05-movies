@@ -26,3 +26,19 @@ export async function fetchSearchFilms(query) {
 
   return response.data;
 }
+
+export async function fetchFilmsCast(id) {
+  const response = await axios.get(
+    `${BASE_URL}movie/${id}/credits?${lang}&${API_KEY}`
+  );
+
+  return response.data;
+}
+
+export async function fetchFilmsReview(id) {
+  const response = await axios.get(
+    `${BASE_URL}movie/${id}/reviews?${lang}&${API_KEY}`
+  );
+
+  return response.data;
+}
