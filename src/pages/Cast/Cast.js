@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import { Outlet, useParams, useLocation } from 'react-router-dom';
-import { fetchFilmsCast } from '../../components/movieDatabaseApi';
+import { Outlet, useParams } from 'react-router-dom';
+import { fetchFilmsCast } from '../../api/movieDatabaseApi';
 import Loader from '../../components/Loader/Loader';
 import toast, { Toaster } from 'react-hot-toast';
 import images from '../../images/images.jpg';
@@ -16,12 +16,11 @@ import {
   DisabledLink,
 } from './Cast.styled';
 
-export default function Cast(id) {
+export default function Cast() {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const location = useLocation();
 
   const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -58,10 +57,11 @@ export default function Cast(id) {
   return (
     <MainWrapper>
       {isLoading && <Loader />}
+
       {cast.map(({ id, character, original_name, profile_path }) => {
         return (
           <AddInfo key={id}>
-            <DisabledLink to={'movies'} state={{ from: location }}>
+            <DisabledLink to={'movies'}>
               {profile_path ? (
                 <Img src={IMG_URL + profile_path} alt={original_name} />
               ) : (
@@ -77,7 +77,7 @@ export default function Cast(id) {
           </AddInfo>
         );
       })}
-      <Outlet />
+
       <Toaster />
     </MainWrapper>
   );

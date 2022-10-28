@@ -1,14 +1,23 @@
-// import PropTypes from 'prop-types';
-import { Title, MainSection } from './Home.styled';
-import TraidingFilms from 'components/RenderFilms/TraidingFilms';
+import ListFilms from 'components/ListFilms/ListFilms';
+import Loader from 'components/Loader/Loader';
+import { useTrendingFilms } from 'hooks';
+import { Toaster } from 'react-hot-toast';
+import { MainSection, Title } from './Home.styled';
 
 export default function Home() {
+  const { trendingFilms, isLoading } = useTrendingFilms();
+
   return (
-    <div>
+    <>
+      {isLoading && <Loader />}
+
       <Title>Trending today</Title>
+
       <MainSection>
-        <TraidingFilms />
+        <ListFilms films={trendingFilms} />
       </MainSection>
-    </div>
+
+      <Toaster />
+    </>
   );
 }

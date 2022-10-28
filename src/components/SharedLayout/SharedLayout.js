@@ -6,19 +6,21 @@ import Loader from 'components/Loader';
 // import Footer from 'components/Footer';
 
 import { Header, Nav, NavItem } from './SharedLayout.styled';
+import { routes } from 'routes';
 
 export default function SharedLayout() {
   return (
     <Wrapper>
       <Header as="header">
         <Nav as="nav">
-          <NavItem to="/" end>
+          <NavItem to={routes.HOME} end>
             Home
           </NavItem>
-          <NavItem to="movies">Movies</NavItem>
+
+          <NavItem to={routes.MOVIES}>Movies</NavItem>
         </Nav>
       </Header>
-      {/* <Footer /> */}
+
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>

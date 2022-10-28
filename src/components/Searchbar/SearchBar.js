@@ -20,6 +20,7 @@ export default function SearchBar({ onSubmit }) {
             <BtnSearch type="submit" disabled={isSubmitting}>
               <AiOutlineSearch size={20} />
             </BtnSearch>
+
             <Input
               name="query"
               type="text"
@@ -30,6 +31,7 @@ export default function SearchBar({ onSubmit }) {
           </FormEl>
         )}
       </Formik>
+
       <Outlet />
     </Search>
   );

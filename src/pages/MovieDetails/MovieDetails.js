@@ -1,67 +1,39 @@
+import BackLink from 'components/BackLink/BackLink';
+import { useMovieDetails } from 'hooks';
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
-import { Outlet, useParams, useLocation } from 'react-router-dom';
-import { fetchFilmsById } from '../../components/movieDatabaseApi';
+import { Toaster } from 'react-hot-toast';
+import { Outlet, useLocation } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
-import toast, { Toaster } from 'react-hot-toast';
+import images from '../../images/images.jpg';
 import {
+  AddTitle,
   FilmCard,
+  Genres,
+  GenresTitle,
   Img,
   MovieTitle,
-  Overview,
   OverTitle,
-  VoteTitle,
-  Vote,
-  GenresTitle,
-  Genres,
-  AddTitle,
+  Overview,
   StyledLink,
+  Vote,
+  VoteTitle,
 } from './MovieDetails.styled';
-import BackLink from 'components/BackLink/BackLink';
-import images from '../../images/images.jpg';
 
-export default function MovieDetails(id) {
-  const { movieId } = useParams();
-  const [movie, setMovie] = useState(null);
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
+export default function MovieDetails() {
   const location = useLocation();
-  const backLink = location.state?.from ?? '/';
+  const { movie, isLoading } = useMovieDetails();
 
   const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+  const backLink = location?.state?.from ?? '/';
+  const { poster_path, title, vote_average, overview, genres } = movie;
 
-  useEffect(() => {
-    async function fetchMovieID(movieId) {
-      try {
-        setIsLoading(true);
-        const response = await fetchFilmsById(movieId);
-        setMovie(response);
-      } catch {
-        setError('Can`t load movies!');
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchMovieID(movieId);
-  }, [movieId]);
-
-  useEffect(() => {
-    if (error !== false) {
-      toast.error(error);
-    }
-  }, [error]);
-
-  if (!movie) {
-    return null;
-  }
-
-  const { poster_path, title, vote_average, overview } = movie;
   return (
     <>
       <BackLink to={backLink}>Back</BackLink>
+
+      {isLoading && <Loader />}
+
       <FilmCard>
-        {isLoading && <Loader />}
         {movie.poster_path ? (
           <Img src={IMG_URL + poster_path} alt={title} />
         ) : (
@@ -75,13 +47,23 @@ export default function MovieDetails(id) {
           <VoteTitle>User Score:</VoteTitle>
           <Vote>{Math.round(vote_average * 10)}%</Vote>
           <GenresTitle>Genres:</GenresTitle>
-          <Genres> {movie.genres.map(genre => genre.name).join(', ')}</Genres>
+
+          <Genres>
+            {genres && genres.map(genre => genre.name).join(', ')}
+          </Genres>
         </div>
       </FilmCard>
+
       <div>
         <AddTitle>Additional information</AddTitle>
-        <StyledLink to={'cast'}>Cast</StyledLink>
-        <StyledLink to={'reviews'}>Reviews</StyledLink>
+
+        <StyledLink to={'cast'} state={{ from: location?.state?.from }}>
+          Cast
+        </StyledLink>
+
+        <StyledLink to={'reviews'} state={{ from: location?.state?.from }}>
+          Reviews
+        </StyledLink>
 
         <Outlet />
         <Toaster />
