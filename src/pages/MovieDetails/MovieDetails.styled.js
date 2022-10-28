@@ -1,11 +1,15 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const FilmCard = styled.main`
   padding-bottom: 20px;
-  display: flex;
+  /* display: flex; */
   width: 100%;
   border-radius: 4px;
   box-shadow: 0px 4px 4px 0px #00000040;
+  @media screen and (min-width: 450px) {
+    display: flex;
+  }
 `;
 
 export const Img = styled.img`
@@ -80,4 +84,12 @@ export const AddTitle = styled.h3`
   padding-top: 20px;
   padding-left: 20px;
   margin-bottom: 10px;
+`;
+
+export const StyledLink = styled(NavLink)`
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  display: inline;
 `;

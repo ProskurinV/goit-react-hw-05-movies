@@ -1,7 +1,7 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import SearchBar from 'components/Searchbar/SearchBar';
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import Loader from 'components/Loader';
 import { fetchSearchFilms } from 'components/movieDatabaseApi';
@@ -11,12 +11,15 @@ import {
   Img,
   MovieTitle,
 } from './RenderSearchFilms.styled';
+import images from '../../images/images.jpg';
 
 export default function RenderSearchFilms() {
   const [searchMovies, setSearchMovies] = useState([]);
   const [query, setQuery] = useState('');
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const location = useLocation();
 
   const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -63,6 +66,7 @@ export default function RenderSearchFilms() {
       setIsLoading(false);
     }
   };
+  console.log(location);
 
   return (
     <main>
@@ -70,9 +74,14 @@ export default function RenderSearchFilms() {
       {isLoading && <Loader />}
       <MovieList>
         {searchMovies.map(({ poster_path, title, id }) => (
-          <NavLink key={id} to={`${id}`}>
+          <NavLink key={id} to={`${id}`} state={{ from: location }}>
             <FilmCard>
-              <Img src={IMG_URL + poster_path} alt={title} />
+              {poster_path ? (
+                <Img src={IMG_URL + poster_path} alt={title} />
+              ) : (
+                <Img src={images} alt={title} />
+              )}
+
               <MovieTitle> {title}</MovieTitle>
             </FilmCard>
           </NavLink>
@@ -83,41 +92,13 @@ export default function RenderSearchFilms() {
     </main>
   );
 }
-// ==========================
-// // import PropTypes from 'prop-types';
-// import React from 'react';
-// import { Formik } from 'formik';
-// import { AiOutlineSearch } from 'react-icons/ai';
-// import { Search, FormEl, Input, BtnSearch, Details } from './Movies.styled';
-// import { Outlet } from 'react-router-dom';
 
-// export default function Movies({ onSubmit }) {
-//   const handleSubmit = async (values, actions) => {
-//     await onSubmit(values);
-
-//     actions.setSubmitting(false);
-//     actions.resetForm();
-//   };
-//   return (
-//     <Search as="main">
-//       <Formik initialValues={{ query: '' }} onSubmit={handleSubmit}>
-//         {({ isSubmitting }) => (
-//           <FormEl>
-//             <BtnSearch type="submit" disabled={isSubmitting}>
-//               <AiOutlineSearch size={20} />
-//             </BtnSearch>
-//             <Input
-//               name="query"
-//               type="text"
-//               autoComplete="off"
-//               autoFocus
-//               placeholder="Search movies"
-//             />
-//           </FormEl>
-//         )}
-//       </Formik>
-//       <Details>Movie details</Details>
-//       <Outlet />
-//     </Search>
-//   );
-// }
+RenderSearchFilms.propTypes = {
+  searchMovies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      poster_path: PropTypes.string.isRequired,
+    })
+  ),
+};

@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { useState, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
@@ -25,6 +25,10 @@ export default function Reviews(id) {
         setIsLoading(true);
         const response = await fetchFilmsReview(movieId);
         const reviewList = response.results;
+        if (reviewList.length === 0) {
+          toast('We don`t have any reviews for this movie');
+          return;
+        }
         setReviews(reviewList);
       } catch {
         setError('Can`t load movies!');
@@ -44,6 +48,7 @@ export default function Reviews(id) {
   if (!reviews) {
     return null;
   }
+
   return (
     <div>
       {isLoading && <Loader />}
@@ -58,8 +63,19 @@ export default function Reviews(id) {
           </ReviewInfo>
         );
       })}
-      <Outlet />
+
       <Toaster />
+      <Outlet />
     </div>
   );
 }
+
+Reviews.propTypes = {
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      author: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ),
+};

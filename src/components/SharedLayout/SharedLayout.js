@@ -1,7 +1,9 @@
 // import PropTypes from 'prop-types';
-
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Wrapper } from './SharedLayout.styled';
+import Loader from 'components/Loader';
+// import Footer from 'components/Footer';
 
 import { Header, Nav, NavItem } from './SharedLayout.styled';
 
@@ -16,8 +18,10 @@ export default function SharedLayout() {
           <NavItem to="movies">Movies</NavItem>
         </Nav>
       </Header>
-
-      <Outlet />
+      {/* <Footer /> */}
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </Wrapper>
   );
 }
