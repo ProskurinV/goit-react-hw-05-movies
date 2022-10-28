@@ -2,7 +2,7 @@ import { MainSection } from './Movies.styled';
 import SearchBar from 'components/Searchbar/SearchBar';
 import { useState, useEffect } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import Loader from 'components/Loader';
 import { fetchSearchFilms } from 'api/movieDatabaseApi';
 import ListFilms from 'components/ListFilms/ListFilms';
@@ -13,7 +13,6 @@ export default function Movies() {
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
 
   useEffect(() => {
     const searchQuery = searchParams.get('query');

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
-import { fetchFilmsById } from 'api/movieDatabaseApi';
+import * as SERVICE from 'api/movieDatabaseApi';
 import { routes } from 'routes';
 
 export const useMovieDetails = () => {
@@ -15,7 +15,7 @@ export const useMovieDetails = () => {
     async function fetchMovieID(movieId) {
       try {
         setIsLoading(true);
-        const response = await fetchFilmsById(movieId);
+        const response = await SERVICE.fetchFilmsById(movieId);
         setMovie(response);
       } catch {
         setError('Can`t load movies!');
