@@ -43,40 +43,28 @@ export const NavItem = styled(NavLink)`
   }
 `;
 
-// export const Footer = styled.div`
-//   background-color: #f7f7f7;
+export const Footer = styled.div`
+  background-color: lightgray;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  /* margin-top: 20px; */
+  width: 100vw;
+`;
 
-//   padding-top: 29px;
-//   padding-bottom: 29px;
-// `;
+export const FooterList = styled.div`
+  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+`;
 
-// .footer__list {
-//   gap: 10px;
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   align-items: baseline;
-// }
-
-// .footer__item {
-//   gap: 3px;
-//   height: 16px;
-
-//   display: flex;
-//   font-weight: 400;
-//   font-size: 14px;
-//   line-height: 1.14;
-//   color: #545454;
-
-//   @media screen and (min-width: 768px) {
-//     font-size: 16px;
-//     line-height: 1.19;
-//   }
-// }
-
-// .show-hover {
-//   &:hover,
-//   &:focus {
-//     color: #2196f3;
-//   }
-// }
+export const FooterItem = styled.p`
+  gap: 3px;
+  height: 16px;
+  display: flex;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  color: #545454;
+`;

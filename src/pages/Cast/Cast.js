@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchFilmsCast } from '../../api/movieDatabaseApi';
 import Loader from '../../components/Loader/Loader';
 import toast, { Toaster } from 'react-hot-toast';
@@ -31,7 +31,7 @@ export default function Cast() {
         const response = await fetchFilmsCast(movieId);
         const castList = response.cast;
         if (castList.length === 0) {
-          toast('We don`t have any reviews for this movie');
+          toast('We don`t have any cast for this movie');
           return;
         }
         setCast(castList);
@@ -57,7 +57,6 @@ export default function Cast() {
   return (
     <MainWrapper>
       {isLoading && <Loader />}
-
       {cast.map(({ id, character, original_name, profile_path }) => {
         return (
           <AddInfo key={id}>

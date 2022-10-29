@@ -17,6 +17,7 @@ import {
   StyledLink,
   Vote,
   VoteTitle,
+  AddWrapper,
 } from './MovieDetails.styled';
 
 export default function MovieDetails() {
@@ -54,7 +55,7 @@ export default function MovieDetails() {
         </div>
       </FilmCard>
 
-      <div>
+      <AddWrapper>
         <AddTitle>Additional information</AddTitle>
 
         <StyledLink to={'cast'} state={{ from: location?.state?.from }}>
@@ -67,19 +68,21 @@ export default function MovieDetails() {
 
         <Outlet />
         <Toaster />
-      </div>
+      </AddWrapper>
     </>
   );
 }
 
 MovieDetails.propTypes = {
-  id: PropTypes.number.isRequired,
   movie: PropTypes.arrayOf(
     PropTypes.shape({
       poster_path: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       vote_average: PropTypes.number.isRequired,
       overview: PropTypes.string.isRequired,
+      genres: PropTypes.arrayOf(
+        PropTypes.shape({ genre: PropTypes.string.isRequired })
+      ),
     })
   ),
 };

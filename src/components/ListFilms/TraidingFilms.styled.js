@@ -13,6 +13,7 @@ export const MovieList = styled.ul`
   list-style: none;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
 `;
 
 export const FilmCard = styled.div`

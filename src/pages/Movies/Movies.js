@@ -1,8 +1,8 @@
 import { MainSection } from './Movies.styled';
 import SearchBar from 'components/Searchbar/SearchBar';
 import { useState, useEffect } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
-import toast from 'react-hot-toast';
+import { useSearchParams } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 import Loader from 'components/Loader';
 import { fetchSearchFilms } from 'api/movieDatabaseApi';
 import ListFilms from 'components/ListFilms/ListFilms';
@@ -35,7 +35,6 @@ export default function Movies() {
           );
           return;
         }
-
         setSearchMovies(films);
       } catch {
         setError('Can`t load movies!');
@@ -45,7 +44,7 @@ export default function Movies() {
     }
 
     fetchImg(searchQuery);
-  }, [searchMovies.length, searchParams]);
+  }, [searchParams]);
 
   useEffect(() => {
     if (error !== false) {
@@ -54,8 +53,6 @@ export default function Movies() {
   }, [error]);
 
   const handlerFormSubmit = values => {
-    console.log(values);
-
     if (query !== values.query.trim()) {
       setSearchMovies([]);
       setQuery(values.query.trim());
@@ -71,6 +68,7 @@ export default function Movies() {
       {isLoading && <Loader />}
 
       <ListFilms films={searchMovies} />
+      <Toaster />
     </MainSection>
   );
 }

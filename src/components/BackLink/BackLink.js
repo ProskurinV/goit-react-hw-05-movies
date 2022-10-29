@@ -12,6 +12,6 @@ export default function BackLink({ to, children }) {
 }
 
 BackLink.propTypes = {
-  to: PropTypes.string.isRequired,
+  to: PropTypes.PropTypes.object.isRequired,
   children: PropTypes.node,
 };

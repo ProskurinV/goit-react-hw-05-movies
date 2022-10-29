@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const FilmCard = styled.main`
   padding-bottom: 20px;
+
   /* display: flex; */
   width: 100%;
   border-radius: 4px;
@@ -92,4 +93,8 @@ export const StyledLink = styled(NavLink)`
   margin-bottom: 10px;
   padding-left: 20px;
   display: inline;
+`;
+
+export const AddWrapper = styled.div`
+  margin-bottom: 60px;
 `;

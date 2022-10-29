@@ -34,11 +34,11 @@ export default function ListFilms({ films }) {
 }
 
 ListFilms.propTypes = {
-  traidingFilms: PropTypes.arrayOf(
+  films: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
-      poster_path: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
     })
   ),
 };
