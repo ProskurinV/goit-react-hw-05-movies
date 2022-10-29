@@ -53,7 +53,6 @@ export default function Cast() {
   if (!cast) {
     return null;
   }
-
   return (
     <MainWrapper>
       {isLoading && <Loader />}

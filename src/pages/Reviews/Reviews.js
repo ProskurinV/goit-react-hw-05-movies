@@ -50,7 +50,7 @@ export default function Reviews(id) {
   }
 
   return (
-    <div>
+    <>
       {isLoading && <Loader />}
       {reviews.map(({ id, author, content }) => {
         return (
@@ -66,7 +66,7 @@ export default function Reviews(id) {
 
       <Toaster />
       <Outlet />
-    </div>
+    </>
   );
 }
 
