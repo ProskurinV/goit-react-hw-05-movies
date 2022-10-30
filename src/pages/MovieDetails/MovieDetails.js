@@ -67,7 +67,7 @@ export default function MovieDetails() {
         <StyledLink to={'reviews'} state={{ from: location?.state?.from }}>
           Reviews
         </StyledLink>
-        <Suspense>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
         <Toaster />

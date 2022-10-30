@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import { Suspense } from 'react';
 import { useState, useEffect } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { fetchFilmsReview } from '../../api/movieDatabaseApi';
@@ -65,7 +65,9 @@ export default function Reviews(id) {
       })}
 
       <Toaster />
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
