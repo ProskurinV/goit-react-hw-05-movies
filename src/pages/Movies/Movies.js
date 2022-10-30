@@ -35,6 +35,7 @@ export default function Movies() {
           );
           return;
         }
+
         setSearchMovies(films);
       } catch {
         setError('Can`t load movies!');

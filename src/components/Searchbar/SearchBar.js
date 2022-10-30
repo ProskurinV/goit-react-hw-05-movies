@@ -10,7 +10,7 @@ export default function SearchBar({ onSubmit }) {
     await onSubmit(values);
 
     actions.setSubmitting(false);
-    actions.resetForm();
+    // actions.resetForm();
   };
   return (
     <Search as="main">

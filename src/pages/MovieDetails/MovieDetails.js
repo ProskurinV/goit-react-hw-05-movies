@@ -1,4 +1,6 @@
 import BackLink from 'components/BackLink/BackLink';
+import { Suspense } from 'react';
+
 import { useMovieDetails } from 'hooks';
 import PropTypes from 'prop-types';
 import { Toaster } from 'react-hot-toast';
@@ -65,8 +67,9 @@ export default function MovieDetails() {
         <StyledLink to={'reviews'} state={{ from: location?.state?.from }}>
           Reviews
         </StyledLink>
-
-        <Outlet />
+        <Suspense>
+          <Outlet />
+        </Suspense>
         <Toaster />
       </AddWrapper>
     </>
